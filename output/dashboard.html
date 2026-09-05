@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>ECDAT — Migration Command Center</title>
+<style>
+body { font-family: -apple-system, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; color: #222; }
+h1 { font-size: 22px; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+th { background: #f7f7f7; }
+.subtitle { color: #666; font-size: 14px; }
+</style></head>
+<body>
+<h1>ECDAT — Migration Command Center (demo)</h1>
+<p class="subtitle">7 cryptographic assets discovered on seeded sample repository</p>
+<table>
+<tr><th>Risk</th><th>Algorithm</th><th>Purpose</th><th>Location</th><th>Recommendation</th></tr>
+
+    <tr>
+      <td><span style="background:#e24b4a;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">CRITICAL</span></td>
+      <td>RSA</td>
+      <td>signature</td>
+      <td>sample_repo/auth.py:8</td>
+      <td>ML-DSA / SLH-DSA</td>
+    </tr>
+    <tr>
+      <td><span style="background:#e24b4a;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">CRITICAL</span></td>
+      <td>ECDH</td>
+      <td>key_establishment</td>
+      <td>sample_repo/auth.py:25</td>
+      <td>ML-KEM / hybrid KEM</td>
+    </tr>
+    <tr>
+      <td><span style="background:#ef9f27;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">MEDIUM</span></td>
+      <td>ECDSA</td>
+      <td>signature</td>
+      <td>sample_repo/cert_service.py:10</td>
+      <td>ML-DSA / SLH-DSA</td>
+    </tr>
+    <tr>
+      <td><span style="background:#ef9f27;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">MEDIUM</span></td>
+      <td>RSA</td>
+      <td>signature</td>
+      <td>sample_repo/document_signing.py:10</td>
+      <td>ML-DSA / SLH-DSA</td>
+    </tr>
+    <tr>
+      <td><span style="background:#639922;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">LOW</span></td>
+      <td>AES</td>
+      <td>encryption</td>
+      <td>sample_repo/internal_tool.py:7</td>
+      <td>AES-256 (if not already)</td>
+    </tr>
+    <tr>
+      <td><span style="background:#639922;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">LOW</span></td>
+      <td>AES</td>
+      <td>encryption</td>
+      <td>sample_repo/payments.py:8</td>
+      <td>AES-256 (if not already)</td>
+    </tr>
+    <tr>
+      <td><span style="background:#ef9f27;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">MEDIUM</span></td>
+      <td>SHA-1</td>
+      <td>hashing</td>
+      <td>sample_repo/payments.py:15</td>
+      <td>SHA-256 or SHA-3</td>
+    </tr>
+</table>
+</body></html>

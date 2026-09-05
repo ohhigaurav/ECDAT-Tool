@@ -1,0 +1,89 @@
+{
+  "bomFormat": "ECDAT-lite",
+  "components": [
+    {
+      "algorithm": "RSA",
+      "purpose": "signature",
+      "source": "sample_repo/auth.py",
+      "line": 8,
+      "confidence": "high",
+      "data_lifetime_years": 15,
+      "business_criticality": "critical",
+      "migration_effort_years": 4,
+      "crqc_horizon_years": 10,
+      "risk_tier": "CRITICAL",
+      "recommendation": "ML-DSA / SLH-DSA",
+      "rationale": "Signature-purpose RSA maps to a PQC signature scheme, not a KEM."
+    },
+    {
+      "algorithm": "ECDH",
+      "purpose": "key_establishment",
+      "source": "sample_repo/auth.py",
+      "line": 24,
+      "confidence": "high",
+      "data_lifetime_years": 15,
+      "business_criticality": "critical",
+      "migration_effort_years": 4,
+      "crqc_horizon_years": 10,
+      "risk_tier": "CRITICAL",
+      "recommendation": "ML-KEM / hybrid KEM",
+      "rationale": "Key-establishment use maps to a PQC key-encapsulation mechanism."
+    },
+    {
+      "algorithm": "RSA",
+      "purpose": "signature",
+      "source": "sample_repo/document_signing.py",
+      "line": 10,
+      "confidence": "high",
+      "data_lifetime_years": 5,
+      "business_criticality": "medium",
+      "migration_effort_years": 2,
+      "crqc_horizon_years": 10,
+      "risk_tier": "MEDIUM",
+      "recommendation": "ML-DSA / SLH-DSA",
+      "rationale": "Signature-purpose RSA maps to a PQC signature scheme, not a KEM."
+    },
+    {
+      "algorithm": "AES",
+      "purpose": "encryption",
+      "source": "sample_repo/internal_tool.py",
+      "line": 7,
+      "confidence": "high",
+      "data_lifetime_years": 1,
+      "business_criticality": "low",
+      "migration_effort_years": 1,
+      "crqc_horizon_years": 10,
+      "risk_tier": "LOW",
+      "recommendation": "AES-256 (if not already)",
+      "rationale": "Grover's algorithm only halves effective symmetric strength \u2014 raise key size, not urgent like public-key crypto."
+    },
+    {
+      "algorithm": "AES",
+      "purpose": "encryption",
+      "source": "sample_repo/payments.py",
+      "line": 8,
+      "confidence": "high",
+      "data_lifetime_years": 15,
+      "business_criticality": "critical",
+      "migration_effort_years": 4,
+      "crqc_horizon_years": 10,
+      "risk_tier": "LOW",
+      "recommendation": "AES-256 (if not already)",
+      "rationale": "Grover's algorithm only halves effective symmetric strength \u2014 raise key size, not urgent like public-key crypto."
+    },
+    {
+      "algorithm": "SHA-1",
+      "purpose": "hashing",
+      "source": "sample_repo/payments.py",
+      "line": 15,
+      "confidence": "high",
+      "data_lifetime_years": 15,
+      "business_criticality": "critical",
+      "migration_effort_years": 4,
+      "crqc_horizon_years": 10,
+      "risk_tier": "MEDIUM",
+      "recommendation": "SHA-256 or SHA-3",
+      "rationale": "SHA-1 is classically broken already \u2014 a hygiene issue, not primarily a quantum one."
+    }
+  ]
+}

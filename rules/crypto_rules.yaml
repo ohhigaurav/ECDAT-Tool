@@ -1,0 +1,40 @@
+rules:
+  - id: rsa-signature-usage
+    languages: [python]
+    severity: WARNING
+    message: "RSA used for signing — quantum vulnerable (Shor's algorithm breaks RSA)"
+    metadata:
+      algorithm: RSA
+      purpose: signature
+    patterns:
+      - pattern: rsa.generate_private_key(...)
+
+  - id: ecdh-key-exchange-usage
+    languages: [python]
+    severity: WARNING
+    message: "ECDH key exchange — quantum vulnerable"
+    metadata:
+      algorithm: ECDH
+      purpose: key_establishment
+    patterns:
+      - pattern: ec.generate_private_key(...)
+
+  - id: aes-symmetric-usage
+    languages: [python]
+    severity: INFO
+    message: "AES symmetric encryption — not quantum-broken (Grover only halves effective strength)"
+    metadata:
+      algorithm: AES
+      purpose: encryption
+    patterns:
+      - pattern: algorithms.AES(...)
+
+  - id: sha1-weak-hash-usage
+    languages: [python]
+    severity: WARNING
+    message: "SHA-1 is cryptographically weak (classically broken, not quantum-specific)"
+    metadata:
+      algorithm: SHA-1
+      purpose: hashing
+    patterns:
+      - pattern: hashlib.sha1(...)
